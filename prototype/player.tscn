@@ -14,23 +14,30 @@ material = SubResource("StandardMaterial3D_onrkg")
 size = Vector3(1, 0.2, 0.2)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hqtel"]
+radius = 0.5390625
 
 [node name="Player" type="CharacterBody3D"]
 
-[node name="skin" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96156, 0)
+[node name="BodyMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010561109, 0.96156, 0)
 mesh = SubResource("CapsuleMesh_4flbx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.4044595, 0, 0, 0, 0.32425267, 0, 0, 0, 1, 0.5898928, 1.5762649, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyMesh"]
+transform = Transform3D(0.4044595, 0, 0, 0, 0.32425267, 0, 0, 0, 1, 0.5793317, 0.61470485, 0)
 mesh = SubResource("BoxMesh_i3pqv")
+skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9603446, 0)
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.01985085, 0.9576918, 0)
 shape = SubResource("CapsuleShape3D_hqtel")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(-3.887658e-07, 4.5714445, -8.893926, 1.9982423e-07, 8.893925, 4.5714455, 10, 2.9320652e-14, -4.3711393e-07, 0.012737274, 1.5812572, 0)
+[node name="CamOrigin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4684753, 0)
 
-[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+[node name="SpringArm3D" type="SpringArm3D" parent="CamOrigin"]
+transform = Transform3D(-3.887658e-07, 4.5714445, -8.893926, 1.9982423e-07, 8.893925, 4.5714455, 10, 2.9320652e-14, -4.3711393e-07, 0.012737274, -0.015959144, 0)
+spring_length = 2.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="CamOrigin/SpringArm3D"]
 transform = Transform3D(0.099999994, 0, 0, 0, 0.10000002, 0, 0, 0, 0.099999994, 1.66101e-08, 0, 0.37999478)
