@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccd5n02dx4vql"]
+[gd_scene load_steps=7 format=3 uid="uid://ccd5n02dx4vql"]
+
+[ext_resource type="Script" uid="uid://jrgpd1lnt72h" path="res://player.gd" id="1_4flbx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sh265"]
 albedo_color = Color(1, 0.39215687, 0.007843138, 1)
@@ -17,6 +19,7 @@ size = Vector3(1, 0.2, 0.2)
 radius = 0.5390625
 
 [node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_4flbx")
 
 [node name="BodyMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010561109, 0.96156, 0)

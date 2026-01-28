@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://brt2hc75624iw"]
+[gd_scene load_steps=10 format=3 uid="uid://brt2hc75624iw"]
 
 [ext_resource type="PackedScene" uid="uid://bsxn7i3h8qy07" path="res://block.tscn" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://ccd5n02dx4vql" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://c3g1hsvul1doy" path="res://steve.tscn" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bkcrh75ikqjp1" path="res://material/Akumawolf.png" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://yh7sag1b1aec" path="res://icon.gd" id="4_lquwl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.6574887, 0.674456, 0.6960133, 1)
@@ -25,8 +27,8 @@ size = Vector3(50, 1, 50)
 
 [node name="main" type="Node3D"]
 
-[node name="RigidBody3D" parent="." instance=ExtResource("1_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6565528, -19.029236)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2109957, 12.703187)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0xm2m")
@@ -45,5 +47,23 @@ mesh = SubResource("BoxMesh_ig7tw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_0xm2m")
 
-[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2553935, 0)
+[node name="Steve" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.793044, 0)
+
+[node name="blocks" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.903197)
+
+[node name="RigidBody3D3" parent="blocks" instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6653767, 14.479294, -13.565498)
+
+[node name="RigidBody3D2" parent="blocks" instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0784903, 9.670761, -15.58766)
+
+[node name="RigidBody3D" parent="blocks" instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6663442, 3.6198235, -19.029236)
+
+[node name="Icon" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.931135, 13.680643, -2.6183457)
+pixel_size = 0.05
+texture = ExtResource("3_1bvp3")
+script = ExtResource("4_lquwl")
