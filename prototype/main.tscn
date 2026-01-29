@@ -28,7 +28,7 @@ size = Vector3(50, 1, 50)
 [node name="main" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2109957, 12.703187)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.545946, 12.703187)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0xm2m")
@@ -36,6 +36,17 @@ environment = SubResource("Environment_0xm2m")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.46312037, -0.65406054, -0.59810066, -0.731792, -0.09851342, 0.6743705, -0.50000006, 0.75, -0.43301266, -6.95365, 10.146264, 0)
 shadow_enabled = true
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.34718722, 0, 0, 0, 0.8829926, 0, 0, 0, 0.34658128, -12.126612, 2.4467702, -8.3626)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("BoxMesh_ig7tw")
+skeleton = NodePath("../../StaticBody3D2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_0xm2m")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62046194, -19.029236)
@@ -48,16 +59,40 @@ mesh = SubResource("BoxMesh_ig7tw")
 shape = SubResource("BoxShape3D_0xm2m")
 
 [node name="Steve" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.793044, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.988591, 18.59983, -13.171417)
 
 [node name="blocks" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.903197)
+
+[node name="RigidBody3D4" parent="blocks" instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6906033, 19.216166, 7.8575153)
 
 [node name="RigidBody3D3" parent="blocks" instance=ExtResource("1_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6653767, 14.479294, -13.565498)
 
 [node name="RigidBody3D2" parent="blocks" instance=ExtResource("1_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0784903, 9.670761, -15.58766)
+
+[node name="RigidBody3D5" parent="blocks" instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.94195, 10.889481, 11.623544)
+
+[node name="RigidBody3D6" parent="blocks" instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38480377, 10.8744755, 13.676967)
+
+[node name="RigidBody3D7" parent="blocks" instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.691296, 10.85947, 5.184108)
+
+[node name="RigidBody3D11" parent="blocks" instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.011032, 20.12967, -13.820455)
+
+[node name="RigidBody3D10" parent="blocks" instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.085009, 29.65918, -2.9964619)
+
+[node name="RigidBody3D9" parent="blocks" instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.60878, 19.613178, 7.0800886)
+
+[node name="RigidBody3D8" parent="blocks" instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.856598, 7.239647, -24.058468)
 
 [node name="RigidBody3D" parent="blocks" instance=ExtResource("1_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6663442, 3.6198235, -19.029236)
