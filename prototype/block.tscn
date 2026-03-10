@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsxn7i3h8qy07"]
+[gd_scene load_steps=4 format=3 uid="uid://bsxn7i3h8qy07"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qncar"]
+albedo_color = Color(1, 0.5077072, 0.80109876, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_qncar"]
+material = SubResource("StandardMaterial3D_qncar")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_im0tn"]
 

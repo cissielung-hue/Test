@@ -8,5 +8,10 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _process(delta):
+	rotate_y(deg_to_rad(ROT_SPEED))
+		
+		
+		
+func _on_body_entered(body):
+	queue_free()

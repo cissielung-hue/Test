@@ -1,16 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3g1hsvul1doy"]
+[gd_scene load_steps=5 format=3 uid="uid://c3g1hsvul1doy"]
 
 [ext_resource type="Script" uid="uid://cfsklmqcerr58" path="res://steve.gd" id="1_bh3ft"]
+[ext_resource type="PackedScene" uid="uid://cvdd31v1lmu3n" path="res://material/testrabbit.glb" id="2_8vtpt"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hdy3p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bh3ft"]
+size = Vector3(1.3, 1, 0.55)
 
 [node name="Steve" type="CharacterBody3D"]
 script = ExtResource("1_bh3ft")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_hdy3p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.08833104, 0.20741773, 0)
 shape = SubResource("BoxShape3D_bh3ft")
+
+[node name="Camera_Controller" parent="." instance=ExtResource("2_8vtpt")]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.085749924, 0, 0)
+
+[node name="Camera_Target" type="Node3D" parent="Camera_Controller"]
+transform = Transform3D(0.91870165, 0.39495224, -9.390234e-09, -0.39495224, 0.91870165, -2.7069241e-08, -2.0642341e-09, 2.857725e-08, 1, -11.4496155, 5.203755, -5.38506e-07)
+
+[node name="Camera3D" type="Camera3D" parent="Camera_Controller/Camera_Target"]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -0.30834484, 0.58582497, -0.005439654)
