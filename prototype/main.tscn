@@ -97,8 +97,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.344904, 4.4915423, -1.8494
 [node name="Coin3" parent="." instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.441593, 4.1028175, -15.359738)
 
+[node name="RigidBody3D2" parent="." instance=ExtResource("7_5vw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7183886, 1.4614801, -3.4456005)
+
 [node name="RigidBody3D" parent="." instance=ExtResource("7_5vw27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1767, 1.2928898, -3.6939712)
-
-[node name="RigidBody3D" parent="RigidBody3D" instance=ExtResource("7_5vw27")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.895088, 0.1685903, 0.24837065)

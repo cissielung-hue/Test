@@ -15,6 +15,7 @@ height = 1.0
 radius = 0.75
 
 [node name="RigidBody3D" type="RigidBody3D"]
+mass = 100.0
 
 [node name="crystalpole" parent="." instance=ExtResource("1_7f7d1")]
 
