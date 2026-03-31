@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3g1hsvul1doy"]
+
+[ext_resource type="Script" uid="uid://cfsklmqcerr58" path="res://steve.gd" id="1_bh3ft"]
+[ext_resource type="PackedScene" uid="uid://cvdd31v1lmu3n" path="res://material/testrabbit.glb" id="2_8vtpt"]
+[ext_resource type="Script" uid="uid://8a8jjmn70xkx" path="res://spring_arm_3d.gd" id="3_2sxuh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bh3ft"]
+size = Vector3(1.3, 1, 0.55)
+
+[node name="Testrabbit" type="CharacterBody3D"]
+script = ExtResource("1_bh3ft")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.08833104, 0.20741773, 0)
+shape = SubResource("BoxShape3D_bh3ft")
+
+[node name="Rabbit" parent="." instance=ExtResource("2_8vtpt")]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.085749924, 0, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+spring_length = 6.0
+script = ExtResource("3_2sxuh")
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(1, 1.131334e-08, -1.4894317e-09, -9.80533e-09, 0.91870165, 0.39495224, 5.836572e-09, -0.39495224, 0.91870165, 0.0830301, 0.95710635, 1.1572514)

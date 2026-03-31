@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck173ttt1o35v"]
+
+[ext_resource type="PackedScene" uid="uid://cmqmo1h8q128d" path="res://material/Bush1.glb" id="1_u6fj1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c6dea"]
+radius = 1.454
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_u6fj1"]
+margin = 0.0
+height = 1.445
+radius = 2.976
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ahd06"]
+radius = 0.735
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n1pum"]
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="Bush1" parent="." instance=ExtResource("1_u6fj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32922363, 0, 1.2070313)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -1.7484555e-07, 0, 1.7484555e-07, 1, 0.25500584, 0.32452434, 3.0355225)
+shape = SubResource("SphereShape3D_c6dea")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0.6672368, 1.6890826, 0.678462)
+shape = SubResource("SphereShape3D_c6dea")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44604874, 0.18507385, 0.538826)
+shape = SubResource("CylinderShape3D_u6fj1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1742195, 2.6198213, -0.010819316)
+shape = SubResource("SphereShape3D_ahd06")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29989576, 1.6957183, 2.264751)
+shape = SubResource("SphereShape3D_n1pum")

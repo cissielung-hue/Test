@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3gl4ytkna8rq"]
+
+[ext_resource type="PackedScene" uid="uid://bvohu6kq1fkug" path="res://material/pole.glb" id="1_m55ix"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_m55ix"]
+height = 0.8
+radius = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6w55b"]
+height = 4.5
+radius = 0.4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_24yto"]
+height = 1.0
+radius = 0.75
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19724119, 0.14760208, 0.5038432)
+shape = SubResource("CylinderShape3D_m55ix")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23418713, 2.849938, 0.5466275)
+shape = SubResource("CylinderShape3D_6w55b")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2126236, 0.29235625, 0.50497913)
+shape = SubResource("CylinderShape3D_24yto")
+
+[node name="pole" parent="." instance=ExtResource("1_m55ix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23477483, 0, 0.5080031)
