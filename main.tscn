@@ -1,6 +1,5 @@
 [gd_scene load_steps=20 format=3 uid="uid://brt2hc75624iw"]
 
-[ext_resource type="PackedScene" uid="uid://bsxn7i3h8qy07" path="res://tscn/block.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://biwdlvgapx07j" path="res://tscn/mountain1.tscn" id="1_4c57u"]
 [ext_resource type="PackedScene" uid="uid://c3g1hsvul1doy" path="res://tscn/steve.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://bkcrh75ikqjp1" path="res://material/Akumawolf.png" id="3_1bvp3"]
@@ -39,7 +38,10 @@ size = Vector3(50, 1, 300)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
 size = Vector3(50, 1, 300)
 
-[node name="main" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_dg77c"]
+size = Vector3(1000, 1, 1000)
+
+[node name="Forest" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0xm2m")
@@ -64,17 +66,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6576023, 1.4183352, 30.138
 [node name="blocks" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.903197)
 
-[node name="RigidBody3D7" parent="blocks" instance=ExtResource("1_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.50616, 10.85947, -0.23724174)
-
 [node name="pole 1" parent="blocks" instance=ExtResource("7_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.115406, 1.4113498, -28.868225)
 
 [node name="pole 2" parent="blocks" instance=ExtResource("7_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3790793, -28.821075)
-
-[node name="RigidBody3D" parent="blocks" instance=ExtResource("1_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.332876, 3.6198235, -12.661592)
 
 [node name="StaticBody3D2" parent="blocks" instance=ExtResource("4_5vw27")]
 transform = Transform3D(0.4279258, 0, -0.9038139, 0, 1, 0, 0.9038139, 0, 0.4279258, -15.852787, 1.9349365, -24)
@@ -107,7 +103,7 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.1679583, 3.0014892, 
 transform = Transform3D(-0.02010499, -0.00243191, 0.9997949, 0.00014144763, 0.99999696, 0.0024352456, -0.99979794, 0.00019037949, -0.020104587, 2.4944196, 3.7417521, 52.506466)
 
 [node name="chest" parent="blocks" instance=ExtResource("8_ycdy4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1724565, 11.600464, 36.894432)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7341478, 11.027172, 33.158077)
 
 [node name="Icon" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.931135, 13.680643, -2.6183457)
@@ -205,3 +201,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7183886, 1.4614801, -3.445
 
 [node name="RigidBody3D" parent="." instance=ExtResource("7_5vw27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1767, 1.2928898, -3.6939712)
+
+[node name="FallZone" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FallZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.24063, 0)
+shape = SubResource("BoxShape3D_dg77c")
+
+[node name="GridMap" type="GridMap" parent="."]
+metadata/_editor_floor_ = Vector3(0, 26, 0)
+
+[connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]
