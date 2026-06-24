@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://1sd3i8funx51"]
 
-[ext_resource type="Script" uid="uid://bovux0c82konh" path="res://area_3d.gd" id="1_nqx2f"]
+[ext_resource type="Script" uid="uid://bovux0c82konh" path="res://scripts/area_3d.gd" id="1_nqx2f"]
 [ext_resource type="PackedScene" uid="uid://bs1tslsiqohws" path="res://material/greenchest.glb" id="2_nqx2f"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_atato"]

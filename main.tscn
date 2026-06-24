@@ -1,10 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://brt2hc75624iw"]
+[gd_scene load_steps=21 format=3 uid="uid://brt2hc75624iw"]
 
 [ext_resource type="PackedScene" uid="uid://biwdlvgapx07j" path="res://tscn/mountain1.tscn" id="1_4c57u"]
 [ext_resource type="PackedScene" uid="uid://c3g1hsvul1doy" path="res://tscn/steve.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://bkcrh75ikqjp1" path="res://material/Akumawolf.png" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://ck173ttt1o35v" path="res://tscn/bush1.tscn" id="4_5vw27"]
-[ext_resource type="Script" uid="uid://yh7sag1b1aec" path="res://icon.gd" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://yh7sag1b1aec" path="res://scripts/icon.gd" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://qxvxnift2qks" path="res://tscn/rock.tscn" id="5_kek77"]
 [ext_resource type="PackedScene" uid="uid://dpsnej8t1e36k" path="res://tscn/coin.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://d3gl4ytkna8rq" path="res://tscn/pole.tscn" id="7_5vw27"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bf6sy478vawbq" path="res://tscn/tree.tscn" id="7_efxa6"]
 [ext_resource type="PackedScene" uid="uid://dctfw8lo4oswl" path="res://tscn/house2.tscn" id="7_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://1sd3i8funx51" path="res://tscn/greenchest.tscn" id="8_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://mbhm01xdc2ck" path="res://tscn/maptry_1.tscn" id="13_ycdy4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_top_color = Color(0.6020899, 0.65888613, 0.94180757, 1)
@@ -51,7 +52,9 @@ transform = Transform3D(-0.46312037, -0.65406054, -0.59810066, -0.731792, -0.098
 shadow_enabled = true
 
 [node name="floor1" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62046194, -80.55554)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.795, 0.5, -22.896)
+collision_layer = 2
+collision_mask = 2
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor1"]
@@ -61,22 +64,31 @@ mesh = SubResource("BoxMesh_ig7tw")
 shape = SubResource("BoxShape3D_0xm2m")
 
 [node name="Steve" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6576023, 1.4183352, 30.138561)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9910126, 5.5055256, -11.241447)
+
+[node name="Maptry1" parent="." instance=ExtResource("13_ycdy4")]
+transform = Transform3D(-1.7484556e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.7484556e-08, 6.115, 1.411, -270)
 
 [node name="blocks" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.903197)
 
 [node name="pole 1" parent="blocks" instance=ExtResource("7_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.115406, 1.4113498, -28.868225)
+collision_layer = 6
+collision_mask = 6
 
 [node name="pole 2" parent="blocks" instance=ExtResource("7_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3790793, -28.821075)
+collision_layer = 6
+collision_mask = 6
 
 [node name="StaticBody3D2" parent="blocks" instance=ExtResource("4_5vw27")]
 transform = Transform3D(0.4279258, 0, -0.9038139, 0, 1, 0, 0.9038139, 0, 0.4279258, -15.852787, 1.9349365, -24)
 
 [node name="StaticBody3D8" parent="blocks" instance=ExtResource("5_kek77")]
 transform = Transform3D(0.20550385, 0, 0.9786563, 0, 1, 0, -0.9786563, 0, 0.20550385, 6.1201115, 2.2882333, 60.74924)
+collision_layer = 2
+collision_mask = 2
 
 [node name="StaticBody3D7" parent="blocks" instance=ExtResource("4_5vw27")]
 transform = Transform3D(0.2769157, 0, 1.1676121, 0, 1.2, 0, -1.1676121, 0, 0.2769157, -2.6142604, 1.8974509, 59.789127)
@@ -86,15 +98,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2, -12.000001)
 
 [node name="StaticBody3D4" parent="blocks" instance=ExtResource("5_kek77")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.103248, 2.1020467, -18.832882)
+collision_layer = 2
+collision_mask = 2
 
 [node name="StaticBody3D3" parent="blocks" instance=ExtResource("5_kek77")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.158062, -25)
+collision_layer = 2
+collision_mask = 2
 
 [node name="StaticBody3D5" parent="blocks" instance=ExtResource("7_efxa6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4, 0)
 
 [node name="StaticBody3D9" parent="blocks" instance=ExtResource("7_ycdy4")]
 transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0.80936575, 1.5040207, 38.851852)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Tree14" parent="blocks" instance=ExtResource("7_efxa6")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.1679583, 3.0014892, 55.299625)
@@ -113,7 +131,9 @@ texture = ExtResource("3_1bvp3")
 script = ExtResource("4_lquwl")
 
 [node name="Mountain" parent="." instance=ExtResource("1_4c57u")]
-transform = Transform3D(-3, 0, 4.5298748e-07, 5.5342847e-10, 2.9999976, 0.0036651904, -4.529871e-07, 0.0036651904, -2.9999976, -135.87018, 3.9726677, -154.33023)
+transform = Transform3D(-3, 0, 4.5298748e-07, 5.5342847e-10, 2.9999976, 0.0036651904, -4.529871e-07, 0.0036651904, -2.9999976, -134.71964, 5.1210747, -106.15379)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Bush4" parent="Mountain" instance=ExtResource("4_5vw27")]
 transform = Transform3D(-0.070131704, -0.021496495, -0.1887477, 0.0056220256, 0.20087643, -0.02496676, 0.18988472, -0.013886948, -0.06897256, -29.067745, 0.1780858, -31.96256)
@@ -189,18 +209,28 @@ transform = Transform3D(0.5397758, -0.015437848, -1.1825413, 0.20937116, 1.28060
 
 [node name="Coin" parent="." instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.023355, 2.4720411, 13.44566)
+collision_layer = 4
+collision_mask = 4
 
 [node name="Coin2" parent="." instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.344904, 4.2507033, -1.8494635)
+collision_layer = 4
+collision_mask = 4
 
 [node name="Coin3" parent="." instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.48181, 6.128668, -35.13192)
+collision_layer = 4
+collision_mask = 4
 
 [node name="RigidBody3D2" parent="." instance=ExtResource("7_5vw27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7183886, 1.4614801, -3.4456005)
+collision_layer = 2
+collision_mask = 2
 
 [node name="RigidBody3D" parent="." instance=ExtResource("7_5vw27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1767, 1.2928898, -3.6939712)
+collision_layer = 2
+collision_mask = 2
 
 [node name="FallZone" type="Area3D" parent="."]
 
