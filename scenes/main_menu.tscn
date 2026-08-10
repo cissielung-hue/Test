@@ -1,0 +1,333 @@
+[gd_scene load_steps=19 format=3 uid="uid://nplyo01xjfob"]
+
+[ext_resource type="Script" uid="uid://bbfwr2psvew7d" path="res://scripts/main_menu.gd" id="1_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://c7lqfsacijecw" path="res://img/start_menu_background.png" id="1_ekxnf"]
+[ext_resource type="FontFile" uid="uid://3dt3c6pwjl47" path="res://fonts/dragonlands/Dragonlands.ttf" id="1_l6cm7"]
+[ext_resource type="AudioStream" uid="uid://qj231vgu3mgx" path="res://audio/Menu_Song.wav" id="4_wu84c"]
+[ext_resource type="Script" uid="uid://jn4442nhx02m" path="res://scripts/audio_control.gd" id="5_8ln24"]
+[ext_resource type="Script" uid="uid://bbjn4gr7guf4" path="res://scripts/music_control.gd" id="6_rtw2f"]
+[ext_resource type="Script" uid="uid://dlmtychinjkel" path="res://scripts/fullscreen_control.gd" id="7_oa1go"]
+[ext_resource type="Script" uid="uid://wybars5ondf0" path="res://scripts/display_options.gd" id="8_tbmy8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bqqt6"]
+texture = ExtResource("1_ekxnf")
+modulate_color = Color(0.5251013, 0.5251013, 0.5251013, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ekxnf"]
+line_spacing = 0.0
+font = ExtResource("1_l6cm7")
+font_size = 80
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vue75"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.24115604, 0.24115604, 0.24115601, 1)
+skew = Vector2(-0.405, 0)
+corner_radius_top_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.7176471)
+shadow_size = 4
+shadow_offset = Vector2(50, -10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
+bg_color = Color(0, 0, 0, 0.5137255)
+border_width_left = 5
+border_width_top = 10
+border_width_right = 5
+border_width_bottom = 25
+border_color = Color(1, 1, 1, 0.5882353)
+border_blend = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ln24"]
+font = ExtResource("1_l6cm7")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_rtw2f"]
+font_size = 20
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_wu84c"]
+color = Color(1, 1, 1, 0.5803922)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8ln24"]
+color = Color(1, 1, 1, 1)
+thickness = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbmy8"]
+bg_color = Color(0.18717614, 0.18717614, 0.18717614, 0.7058824)
+corner_radius_top_left = 5
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jk1qb"]
+bg_color = Color(0.2520276, 0.25202766, 0.25202754, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bqqt6")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bqqt6")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 169.0
+grow_horizontal = 2
+text = "To Dragons' Plateaus"
+label_settings = SubResource("LabelSettings_ekxnf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037326388
+anchor_top = 0.2808642
+anchor_right = 0.30381945
+anchor_bottom = 0.92901236
+offset_bottom = 13.0
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Resume" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
+text = "Resume"
+metadata/_edit_use_anchors_ = true
+
+[node name="New Game" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(10.933683, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
+text = "New Game"
+metadata/_edit_use_anchors_ = true
+
+[node name="Load Game" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(10.933683, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
+text = "Load Game"
+metadata/_edit_use_anchors_ = true
+
+[node name="Settings" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(10.933683, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
+text = "Settings"
+metadata/_edit_use_anchors_ = true
+
+[node name="Exit" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(10.933683, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
+text = "Exit"
+metadata/_edit_use_anchors_ = true
+
+[node name="Background_Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wu84c")
+autoplay = true
+bus = &"Music"
+playback_type = 1
+
+[node name="Settings" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -379.5
+offset_top = -202.0
+offset_right = 379.5
+offset_bottom = 241.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wu84c")
+
+[node name="Title" type="Label" parent="Settings"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 0.5
+offset_right = 0.5
+offset_bottom = 138.0
+grow_horizontal = 2
+text = "Settings
+"
+label_settings = SubResource("LabelSettings_8ln24")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music Volume" type="Label" parent="Settings"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 153.5
+offset_top = 60.0
+offset_right = -177.5
+offset_bottom = 159.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 1
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_rtw2f")
+vertical_alignment = 1
+
+[node name="Music Control" type="HSlider" parent="Settings/Music Volume"]
+layout_mode = 0
+offset_top = 61.0
+offset_right = 427.5
+offset_bottom = 77.0
+theme_override_styles/slider = SubResource("StyleBoxLine_wu84c")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_8ln24")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8ln24")
+min_value = -30.0
+max_value = 10.0
+step = 0.5
+value = -10.0
+rounded = true
+script = ExtResource("5_8ln24")
+
+[node name="Game Volume" type="Label" parent="Settings"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 153.5
+offset_top = 112.0
+offset_right = -177.5
+offset_bottom = 211.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 1
+text = "Game Volume"
+label_settings = SubResource("LabelSettings_rtw2f")
+vertical_alignment = 1
+
+[node name="Audio Control" type="HSlider" parent="Settings/Game Volume"]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 427.5
+offset_bottom = 76.0
+theme_override_styles/slider = SubResource("StyleBoxLine_wu84c")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_8ln24")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8ln24")
+min_value = -30.0
+max_value = 10.0
+step = 0.5
+value = -10.0
+rounded = true
+script = ExtResource("6_rtw2f")
+
+[node name="FullscreenControl" type="CheckButton" parent="Settings"]
+layout_mode = 0
+offset_left = 153.5
+offset_top = 204.0
+offset_right = 575.5
+offset_bottom = 240.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbmy8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tbmy8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tbmy8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tbmy8")
+text = "WIndow Mode"
+script = ExtResource("7_oa1go")
+
+[node name="Display Settings" type="Label" parent="Settings"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 153.5
+offset_top = 255.0
+offset_right = -177.5
+offset_bottom = 290.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 1
+text = "Display Quality"
+label_settings = SubResource("LabelSettings_rtw2f")
+vertical_alignment = 1
+
+[node name="Display Options" type="OptionButton" parent="Settings/Display Settings"]
+layout_mode = 0
+offset_top = 35.0
+offset_right = 422.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jk1qb")
+selected = 0
+item_count = 4
+popup/item_0/text = "Ultra"
+popup/item_0/id = 0
+popup/item_1/text = "High"
+popup/item_1/id = 1
+popup/item_2/text = "Mid"
+popup/item_2/id = 2
+popup/item_3/text = "Low"
+popup/item_3/id = 3
+script = ExtResource("8_tbmy8")
+
+[node name="Back Settings" type="Button" parent="Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.874
+anchor_right = 0.5
+anchor_bottom = 0.874
+offset_left = -101.0
+offset_top = -27.182007
+offset_right = 84.0
+offset_bottom = 32.817993
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(10.933683, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
+text = "Back
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="Buttons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Buttons/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Buttons/Load Game" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="Buttons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Buttons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="Settings/Music Volume/Music Control" to="Settings/Music Volume/Music Control" method="_on_value_changed"]
+[connection signal="value_changed" from="Settings/Game Volume/Audio Control" to="Settings/Game Volume/Audio Control" method="_on_value_changed"]
+[connection signal="toggled" from="Settings/FullscreenControl" to="Settings/FullscreenControl" method="_on_toggled"]
+[connection signal="item_selected" from="Settings/Display Settings/Display Options" to="Settings/Display Settings/Display Options" method="_on_item_selected"]
+[connection signal="pressed" from="Settings/Back Settings" to="." method="_on_back_settings_pressed"]

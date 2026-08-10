@@ -5,7 +5,6 @@ const JUMP_VELOCITY = 4.5
 @export var mouse_sensibility: float = 0.02
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	initate_state_machine()
 	
 func _physics_process(delta: float) -> void:
@@ -31,7 +30,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("run"):
 		run_multiplier = 2.0
 
-
 	# Apply movement
 	if direction:
 		velocity.x = direction.x * SPEED * run_multiplier
@@ -42,14 +40,14 @@ func _physics_process(delta: float) -> void:
 
 	# Rotate test_playerhuman to match camera
 	# Rotate ONLY the test_playerhuman mesh
-	$test_playerhuman.rotate_toward_direction(direction, delta)
+	$Player2.rotate_toward_direction(direction, delta)
 
 	move_and_slide()
 	
 func initate_state_machine():
-
 	pass
 
 
 func _on_fall_zone_body_entered(body: Node3D) -> void:
-	get_tree().change_scene_to_file("res://main.tscn")
+	if body is player:
+		get_tree().change_scene_to_file("res://scenes/dead.tscn")

@@ -1,0 +1,335 @@
+[gd_scene load_steps=18 format=3 uid="uid://c5ied2ra1dq2r"]
+
+[ext_resource type="Script" uid="uid://v0ns03vc752q" path="res://scripts/game_menu.gd" id="1_5d2l8"]
+[ext_resource type="FontFile" uid="uid://3dt3c6pwjl47" path="res://fonts/dragonlands/Dragonlands.ttf" id="2_7l7mv"]
+[ext_resource type="AudioStream" uid="uid://qj231vgu3mgx" path="res://audio/Menu_Song.wav" id="2_v4r4p"]
+[ext_resource type="Script" uid="uid://jn4442nhx02m" path="res://scripts/audio_control.gd" id="3_v4r4p"]
+[ext_resource type="Script" uid="uid://bbjn4gr7guf4" path="res://scripts/music_control.gd" id="4_1s2dm"]
+[ext_resource type="Script" uid="uid://dlmtychinjkel" path="res://scripts/fullscreen_control.gd" id="6_1s2dm"]
+[ext_resource type="Script" uid="uid://wybars5ondf0" path="res://scripts/display_options.gd" id="7_88e76"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5d2l8"]
+bg_color = Color(0.19215687, 0.19215687, 0.19215687, 0.61960787)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 15
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7l7mv"]
+bg_color = Color(0, 0, 0, 0.8666667)
+corner_radius_top_right = 100
+corner_radius_bottom_left = 100
+shadow_color = Color(0.12225217, 0.12225226, 0.12225223, 0.78431374)
+shadow_size = 5
+shadow_offset = Vector2(0, 5.68)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knqa7"]
+bg_color = Color(0, 0, 0, 0.5137255)
+border_width_left = 5
+border_width_top = 10
+border_width_right = 5
+border_width_bottom = 25
+border_color = Color(1, 1, 1, 0.5882353)
+border_blend = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_71k7c"]
+font = ExtResource("2_7l7mv")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_cmnsq"]
+font_size = 20
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ofnjo"]
+color = Color(1, 1, 1, 0.5803922)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_1rgno"]
+color = Color(1, 1, 1, 1)
+thickness = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hnlu"]
+bg_color = Color(0.18717614, 0.18717614, 0.18717614, 0.7058824)
+corner_radius_top_left = 5
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3o3g3"]
+bg_color = Color(0.2520276, 0.25202766, 0.25202754, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5b1d"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.24115604, 0.24115604, 0.24115601, 1)
+skew = Vector2(-0.405, 0)
+corner_radius_top_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.7176471)
+shadow_size = 4
+shadow_offset = Vector2(50, -10)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_5d2l8")
+
+[node name="Pause Menu" type="Control" parent="."]
+process_mode = 2
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background_Music" type="AudioStreamPlayer" parent="Pause Menu"]
+process_mode = 2
+stream = ExtResource("2_v4r4p")
+autoplay = true
+mix_target = 1
+bus = &"Music"
+playback_type = 1
+
+[node name="Background" type="Panel" parent="Pause Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 39.111084
+offset_top = 13.25
+offset_right = 1072.8889
+offset_bottom = 594.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5d2l8")
+
+[node name="Pause Buttons" type="VBoxContainer" parent="Pause Menu/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.5
+offset_top = -172.0
+offset_right = 203.5
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="Resume" type="Button" parent="Pause Menu/Background/Pause Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_7l7mv")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_7l7mv")
+text = "Resume"
+
+[node name="Restart" type="Button" parent="Pause Menu/Background/Pause Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_7l7mv")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_7l7mv")
+text = "ReStart"
+
+[node name="Settings" type="Button" parent="Pause Menu/Background/Pause Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_7l7mv")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_7l7mv")
+text = "Settings"
+
+[node name="Main Menu" type="Button" parent="Pause Menu/Background/Pause Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_7l7mv")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_7l7mv")
+text = "Main Menu"
+
+[node name="Settings" type="Panel" parent="Pause Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 176.5
+offset_top = 102.0
+offset_right = 935.5
+offset_bottom = 545.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_knqa7")
+
+[node name="Title" type="Label" parent="Pause Menu/Settings"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 0.5
+offset_right = 0.5
+offset_bottom = 138.0
+grow_horizontal = 2
+text = "Settings
+"
+label_settings = SubResource("LabelSettings_71k7c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music Volume" type="Label" parent="Pause Menu/Settings"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 153.5
+offset_top = 60.0
+offset_right = -177.5
+offset_bottom = 159.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_7l7mv")
+theme_override_font_sizes/font_size = 1
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_cmnsq")
+vertical_alignment = 1
+
+[node name="Music Control" type="HSlider" parent="Pause Menu/Settings/Music Volume"]
+layout_mode = 0
+offset_top = 61.0
+offset_right = 427.5
+offset_bottom = 77.0
+theme_override_styles/slider = SubResource("StyleBoxLine_ofnjo")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_1rgno")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_1rgno")
+min_value = -30.0
+max_value = 10.0
+step = 0.5
+value = -10.0
+rounded = true
+script = ExtResource("3_v4r4p")
+
+[node name="Game Volume" type="Label" parent="Pause Menu/Settings"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 153.5
+offset_top = 112.0
+offset_right = -177.5
+offset_bottom = 211.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_7l7mv")
+theme_override_font_sizes/font_size = 1
+text = "Game Volume"
+label_settings = SubResource("LabelSettings_cmnsq")
+vertical_alignment = 1
+
+[node name="Audio Control" type="HSlider" parent="Pause Menu/Settings/Game Volume"]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 427.5
+offset_bottom = 76.0
+theme_override_styles/slider = SubResource("StyleBoxLine_ofnjo")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_1rgno")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_1rgno")
+min_value = -30.0
+max_value = 10.0
+step = 0.5
+value = -10.0
+rounded = true
+script = ExtResource("4_1s2dm")
+
+[node name="FullscreenControl" type="CheckButton" parent="Pause Menu/Settings"]
+layout_mode = 0
+offset_left = 153.5
+offset_top = 204.0
+offset_right = 575.5
+offset_bottom = 240.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_7l7mv")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_4hnlu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4hnlu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4hnlu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_4hnlu")
+text = "WIndow Mode"
+script = ExtResource("6_1s2dm")
+
+[node name="Display Settings" type="Label" parent="Pause Menu/Settings"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 153.5
+offset_top = 255.0
+offset_right = -177.5
+offset_bottom = 290.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_7l7mv")
+theme_override_font_sizes/font_size = 1
+text = "Display Quality"
+label_settings = SubResource("LabelSettings_cmnsq")
+vertical_alignment = 1
+
+[node name="Display Options" type="OptionButton" parent="Pause Menu/Settings/Display Settings"]
+layout_mode = 0
+offset_top = 35.0
+offset_right = 422.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("2_7l7mv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3o3g3")
+selected = 0
+item_count = 4
+popup/item_0/text = "Ultra"
+popup/item_0/id = 0
+popup/item_1/text = "High"
+popup/item_1/id = 1
+popup/item_2/text = "Mid"
+popup/item_2/id = 2
+popup/item_3/text = "Low"
+popup/item_3/id = 3
+script = ExtResource("7_88e76")
+
+[node name="Back Settings" type="Button" parent="Pause Menu/Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.874
+anchor_right = 0.5
+anchor_bottom = 0.874
+offset_left = -101.0
+offset_top = -27.182007
+offset_right = 84.0
+offset_bottom = 32.817993
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(10.933683, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_7l7mv")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxFlat_h5b1d")
+text = "Back
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause Menu/Settings"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Mission" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[connection signal="pressed" from="Pause Menu/Background/Pause Buttons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Pause Menu/Background/Pause Buttons/Restart" to="." method="_on_resume_2_pressed"]
+[connection signal="pressed" from="Pause Menu/Background/Pause Buttons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Pause Menu/Background/Pause Buttons/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="value_changed" from="Pause Menu/Settings/Music Volume/Music Control" to="Pause Menu/Settings/Music Volume/Music Control" method="_on_value_changed"]
+[connection signal="value_changed" from="Pause Menu/Settings/Game Volume/Audio Control" to="Pause Menu/Settings/Game Volume/Audio Control" method="_on_value_changed"]
+[connection signal="toggled" from="Pause Menu/Settings/FullscreenControl" to="Pause Menu/Settings/FullscreenControl" method="_on_toggled"]
+[connection signal="item_selected" from="Pause Menu/Settings/Display Settings/Display Options" to="Pause Menu/Settings/Display Settings/Display Options" method="_on_item_selected"]
+[connection signal="pressed" from="Pause Menu/Settings/Back Settings" to="." method="_on_back_settings_pressed"]

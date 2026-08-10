@@ -1,0 +1,115 @@
+[gd_scene load_steps=13 format=3 uid="uid://i4egdl6v584s"]
+
+[ext_resource type="Script" uid="uid://ci4nsuw3yg7vt" path="res://scripts/loading.gd" id="1_rx3dl"]
+[ext_resource type="FontFile" uid="uid://3dt3c6pwjl47" path="res://fonts/dragonlands/Dragonlands.ttf" id="2_5d8b5"]
+[ext_resource type="Texture2D" uid="uid://t8nv0it2ldud" path="res://img/Loading_gif.png" id="3_y56h7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwpl6"]
+bg_color = Color(0.67481464, 0.67481464, 0.6748146, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y56h7"]
+bg_color = Color(0, 0, 0, 0.627451)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwpl6"]
+atlas = ExtResource("3_y56h7")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snebq"]
+atlas = ExtResource("3_y56h7")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7b1f"]
+atlas = ExtResource("3_y56h7")
+region = Rect2(0, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ese8"]
+atlas = ExtResource("3_y56h7")
+region = Rect2(1024, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5l37"]
+atlas = ExtResource("3_y56h7")
+region = Rect2(0, 2048, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnwrg"]
+atlas = ExtResource("3_y56h7")
+region = Rect2(1024, 2048, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_15qtj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwpl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snebq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7b1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ese8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5l37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnwrg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Loading" type="Node2D"]
+script = ExtResource("1_rx3dl")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1155.0
+offset_bottom = 649.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wwpl6")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 246.0
+offset_top = 478.0
+offset_right = 890.0
+offset_bottom = 532.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_5d8b5")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/background = SubResource("StyleBoxFlat_y56h7")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 440.0
+offset_top = 427.0
+offset_right = 697.0
+offset_bottom = 464.0
+theme_override_fonts/font = ExtResource("2_5d8b5")
+theme_override_font_sizes/font_size = 30
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(574.99994, 231)
+scale = Vector2(0.31835938, 0.31835938)
+sprite_frames = SubResource("SpriteFrames_15qtj")
+autoplay = "default"
+frame_progress = 0.35408434

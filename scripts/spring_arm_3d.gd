@@ -6,10 +6,9 @@ extends SpringArm3D
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and Input.MOUSE_MODE_CAPTURED:
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotation.y -= event.relative.x * mouse_sensibility
 		rotation.y = wrapf(rotation.y, 0.0, TAU)
 		

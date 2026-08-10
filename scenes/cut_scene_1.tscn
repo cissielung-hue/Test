@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceesysic28dk1"]
+
+[ext_resource type="VideoStream" uid="uid://daccj5wjamy1u" path="res://img/cut-scene-1.ogv" id="1_vkevs"]
+
+[node name="cut scene 1" type="Node2D"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = 259.0
+offset_right = 2307.0
+offset_bottom = 2048.0
+scale = Vector2(0.31645033, 0.31645033)
+stream = ExtResource("1_vkevs")
+autoplay = true
